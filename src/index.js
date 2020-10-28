@@ -1,5 +1,5 @@
 const header = document.getElementById("header")
-  const form = document.getElementById('orchestraForm') //might need to be listForm
+  const form = document.getElementById('orchestraForm') 
   const mainContainer = document.getElementById('container')
 
   form.addEventListener('submit', Orchestra.createOrchestra)
