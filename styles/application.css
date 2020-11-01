@@ -1,3 +1,12 @@
 h1 {
-    color: red;
-  }
+  color:blue;
+}
+
+h2 {
+  color: blueviolet;
+}
+
+body {
+  background-image: url(..img/image1.jpg);
+  /* background-color: blueviolet; */
+ }
