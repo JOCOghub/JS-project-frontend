@@ -1,3 +1,10 @@
+body{
+  background-image: url(../img/image1.jpg);
+  /* background-size: cover;
+  margin: 0;
+  padding: 0; */
+}
+
 h1 {
   color:blue;
 }
@@ -6,7 +13,4 @@ h2 {
   color: blueviolet;
 }
 
-body {
-  background-image: url(..img/image1.jpg);
-  /* background-color: blueviolet; */
- }
+

@@ -27,8 +27,11 @@ class Orchestra {
       let label = document.createElement("label")
       let input = document.createElement('input')
       let btn = document.createElement("input")
+      let btn2 = document.createElement("button")//new
       btn.type = "submit"
-      btn.innerText = "Submit"
+      btn.innerText = "submit"
+      btn2.type = "delete"     //new
+      btn2.innerText = "delete" //new
       input.id = "content"
       label.innerText = "Content:"
       form.id = "instrumentForm"
@@ -42,6 +45,7 @@ class Orchestra {
       container.append(ul)
       for (let instrument of this.instruments) {
         ul.innerHTML += instrument.instrumentHTML()
+        ul.append(btn2) //new
       }
       container.append(form)
       form.addEventListener('submit', this.submitInstrument.bind(this))
@@ -51,7 +55,7 @@ class Orchestra {
       event.preventDefault()
       let content = document.getElementById("content").value
       let orchestra_id = this.id
-      let instrument = {instrument: {content, orchestra_id}} // destructuring lines 52/53 -> keys and variable names must match
+      let instrument = {instrument: {content, orchestra_id}}
       let options = {
         method: "POST",
         headers: {"Content-Type": "application/json", "Accept": "application/json"},
@@ -130,7 +134,9 @@ class Orchestra {
   
       }).catch((err) => alert(err))
     }
-  
-  
+    
+    // deleteOrchestra()
+    //   event;preventDefault()
+
   }
   
