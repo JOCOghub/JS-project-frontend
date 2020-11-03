@@ -27,11 +27,8 @@ class Orchestra {
       let label = document.createElement("label")
       let input = document.createElement('input')
       let btn = document.createElement("input")
-      let btn2 = document.createElement("button")//new
       btn.type = "submit"
       btn.innerText = "submit"
-      btn2.type = "delete"     //new
-      btn2.innerText = "delete" //new
       input.id = "content"
       label.innerText = "Content:"
       form.id = "instrumentForm"
@@ -44,13 +41,19 @@ class Orchestra {
       container.append(h3)
       container.append(ul)
       for (let instrument of this.instruments) {
-        ul.innerHTML += instrument.instrumentHTML()
-        ul.append(btn2) //new
+        let btn2 = document.createElement("button")
+        let ele = document.createElement("li")
+        ele.id = instrument.id
+        ele.innerText = instrument.content     
+        btn2.innerText = "delete" 
+        ul.append(ele)
+        document.getElementById(instrument.id).append(btn2) 
+        btn2.addEventListener('click', instrument.deleteInstrument.bind(instrument))
       }
       container.append(form)
       form.addEventListener('submit', this.submitInstrument.bind(this))
     }
-  
+
     async submitInstrument(){
       event.preventDefault()
       let content = document.getElementById("content").value
@@ -134,9 +137,7 @@ class Orchestra {
   
       }).catch((err) => alert(err))
     }
-    
-    // deleteOrchestra()
-    //   event;preventDefault()
+
 
   }
   

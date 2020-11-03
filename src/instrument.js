@@ -10,5 +10,20 @@ class Instrument {
       return `<li id="${this.id}">${this.content}</li>`
     }
   
+    async deleteInstrument() { 
+      try {
+      const response = await fetch(`http://localhost:3000/instruments/${this.id}`, { 
+          method: 'DELETE', 
+          headers: { 
+              'Content-type': 'application/json'
+          } 
+      }); 
+      let instrument = await response.json()
+      document.removeChild(instrument)
+       
+    }catch(error){
+      alert(error)
+    }
+  } 
   
   }
