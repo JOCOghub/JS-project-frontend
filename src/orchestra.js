@@ -91,7 +91,6 @@ class Orchestra {
     static renderOrchestras() {
       for (let orchestra of this.allOrchestras) {
           orchestra.renderOrchestra()
-  
       }
     }
   

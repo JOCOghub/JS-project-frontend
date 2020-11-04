@@ -19,7 +19,7 @@ class Instrument {
           } 
       }); 
       let instrument = await response.json()
-      document.removeChild(instrument)
+      instrument.remove(this.content)
        
     }catch(error){
       alert(error)

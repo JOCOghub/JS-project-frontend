@@ -1,16 +1,21 @@
 body{
-  background-image: url(image1.jpg);
+  /*background-image: url(image1.jpg);*/
+  background-image: url(..img/imagetwo.jpg);
   /* background-size: cover;
   margin: 0;
-  padding: 0; */
-}
+  padding: 0;*/
+} 
 
 h1 {
   color:blue;
 }
 
 h1:hover {
-  background-color: yellow;
+  color: red;
+}
+
+p:hover {
+  color: red;
 }
 
 h2 {
