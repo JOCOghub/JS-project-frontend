@@ -19,7 +19,8 @@ class Instrument {
           } 
       }); 
       let instrument = await response.json()
-      instrument.remove(this.content)
+       document.getElementById(this.id).remove
+      
        
     }catch(error){
       alert(error)

@@ -1,24 +1,54 @@
 body{
-  /*background-image: url(image1.jpg);*/
-  background-image: url(..img/imagetwo.jpg);
-  /* background-size: cover;
-  margin: 0;
-  padding: 0;*/
+  background-image: url(image1.jpg);
+ /* background-image: url(img/imagetwo.jpg); */
+  background-size: cover;
+  /* margin: 0;
+  padding: 0; */
+  /* background-color: blueviolet; */
 } 
 
 h1 {
-  color:blue;
+  color:rgb(255, 196, 0);
+  font-size: 50px;
+  justify-content: center;
 }
 
 h1:hover {
   color: red;
 }
 
+p{
+  font-family: 'Apple chancery', cursive;
+    color: rgb(176, 11, 218);    
+    font-weight: 900;
+    font-size: 22px;
+    justify-content: space-between;
+}
+
 p:hover {
   color: red;
 }
 
-h2 {
+#text{
+  font-family: 'Times New Roman', Times, serif;
+    color: rgb(19, 15, 226);    
+    font-weight: 900;
+    font-size: 22px;
+    justify-content: space-between;
+}
+
+li{
+  color: rgb(243, 99, 16);
+  font-size: 22px;
+}
+
+label{
+  font-weight: 200;
+    font-size: 22px;
+}
+
+h3 {
   color: blueviolet;
+  font-size: 60px;
 }
 
