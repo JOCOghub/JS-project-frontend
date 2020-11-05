@@ -17,11 +17,10 @@ class Instrument {
           headers: { 
               'Content-type': 'application/json'
           } 
-      }); 
-      let instrument = await response.json()
-       document.getElementById(this.id).remove
-      
-       
+      })
+     let removeInstrument = document.getElementById(this.id)
+         removeInstrument.remove(this.content)
+
     }catch(error){
       alert(error)
     }
