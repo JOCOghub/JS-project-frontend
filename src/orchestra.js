@@ -54,6 +54,7 @@ class Orchestra {
       form.addEventListener('submit', this.submitInstrument.bind(this))
     }
 
+    
     async submitInstrument(){
       event.preventDefault()
       let content = document.getElementById("content").value
@@ -84,13 +85,9 @@ class Orchestra {
   
     }
   
-    // generateOrchestraHTML() {
-    //   return `<p id="${this.id}">${this.name}</p>`
-    // }
-  
     static renderOrchestras() {
       for (let orchestra of this.allOrchestras) {
-          orchestra.renderOrchestra()
+        orchestra.renderOrchestra()
       }
     }
   
