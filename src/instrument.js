@@ -1,48 +1,49 @@
 class Instrument {
 
-    static allInstruments = [] 
+  static allInstruments = [] 
 
-    constructor(instrument){
-      this.content = instrument.attributes.content
-      this.id = instrument.id
-      this.orchestraId = instrument.attributes.orchestra_id
-      Instrument.allInstruments.push(this.content)
-    }
+  constructor(instrument){
+    this.content = instrument.attributes.content
+    this.id = instrument.id
+    this.orchestraId = instrument.attributes.orchestra_id
+    Instrument.allInstruments.push(this) // counsider pushing entire object with its id so you can ref the instruments orchestras
+  }
   
-    instrumentHTML() {
-      return `<li id="${this.id}">${this.content}</li>`
-    }
+  instrumentHTML() {
+    return `<li id="${this.id}">${this.content}</li>`
+  }
   
-    async deleteInstrument() { 
-      try {
+  async deleteInstrument() { 
+    try {
       const response = await fetch(`http://localhost:3000/instruments/${this.id}`, { 
-          method: 'DELETE', 
-          headers: { 
-              'Content-type': 'application/json'
-          } 
+        method: 'DELETE', 
+        headers: { 
+          'Content-type': 'application/json'
+        } 
       })
      let removeInstrument = document.getElementById(this.id)
-         removeInstrument.remove(this.content)
+      removeInstrument.remove(this.content)
 
-    }catch(error){
+    } catch(error) {
       alert(error)
     }
   } 
   
-   static findInstrument(){
-     event.preventDefault();
-     console.log('works')
-     let name = document.getElementById('orchestraName').value
-     let instrument = Instrument.allInstruments.find(instrument => instrument.content == name)//filter or find?
-      console.log(Instrument.allInstruments)
-       if (instrument){
-         container.innerHTML = ""
-         console.log(instrument.orchestra)
-         container.innerHTML += `<li> The instrument you searched for is in the ${this.orchestra} concert.</li>`
-       } else {
-         alert('Instrument not found')
-       }
-         document.getElementById('instrumentName').value = ""
-   }
-
- }
+  static findInstrument() {
+    event.preventDefault();
+    let name = document.getElementById('instrumentName').value 
+    console.log(name,"- name")
+    console.log("all instruments - ",Instrument.allInstruments)
+    let found = Instrument.allInstruments.find(instrument => instrument.content == name)
+    console.log(found,"- found")
+    if (found){
+      container.innerHTML = ""
+      let orcId = found.orchestraId
+      let orchestraName = Orchestra.allOrchestras.find(orchestra => orchestra.id == orcId)
+      console.log(orchestraName,"-orchestraName")
+      container.innerHTML += `<li> The instrument you searched for is in the ${orchestraName.name} concert.</li>`
+    } else {
+      alert('Instrument not found')
+    }
+  }
+}
