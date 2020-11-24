@@ -6,7 +6,7 @@ class Instrument {
       this.content = instrument.attributes.content
       this.id = instrument.id
       this.orchestraId = instrument.attributes.orchestra_id
-      Instrument.allInstruments.push(this)
+      Instrument.allInstruments.push(this.content)
     }
   
     instrumentHTML() {
@@ -29,12 +29,20 @@ class Instrument {
     }
   } 
   
-   findInstrument(){
-     event.preventDefault()
+   static findInstrument(){
+     event.preventDefault();
      console.log('works')
-     const name = document.getElementById('orchestraName').value
-     allInstruments.filter(instrument => instrument == name)
-     showOrchestra(instrument.orchestra)
+     let name = document.getElementById('orchestraName').value
+     let instrument = Instrument.allInstruments.find(instrument => instrument.content == name)//filter or find?
+      console.log(Instrument.allInstruments)
+       if (instrument){
+         container.innerHTML = ""
+         console.log(instrument.orchestra)
+         container.innerHTML += `<li> The instrument you searched for is in the ${this.orchestra} concert.</li>`
+       } else {
+         alert('Instrument not found')
+       }
+         document.getElementById('instrumentName').value = ""
    }
 
  }

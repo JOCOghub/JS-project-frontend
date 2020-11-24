@@ -2,8 +2,9 @@
   const form = document.getElementById('orchestraForm')
   const mainContainer = document.getElementById('container')
   const form2 = document.getElementById('findForm')
+  
   form.addEventListener('submit', Orchestra.createOrchestra)
-  form2.addEventListener('submit', Instrument.findInstrument)//bind?
+  form2.addEventListener('click', Instrument.findInstrument)
   header.addEventListener('click', reset)
 
   function reset(){
@@ -16,21 +17,18 @@
     mainContainer.innerHTML +=`<form id="findForm">
     <label for="">Find Instrument:</label>
     <input type="text" id="instrumentName">
-    
-  </form>`
+    <button type="button">Find Instrument</button>
+  </form>` 
     addListeners()
   }
 
   function addListeners() {
       const form = document.getElementById('orchestraForm')
       const form2 = document.getElementById('findForm')
-      const findbutton = document.createElement('button')
-      findbutton.innerText = "Find"
-      form2.append(findbutton)
       const div = document.createElement('div')
       div.id = "orchestraContainer"
       mainContainer.append(div)
-      form.addEventListener('submit', Orchestra.createOrchestra)//how is this value being passed?
+      form.addEventListener('submit', Orchestra.createOrchestra)
       form2.addEventListener('click', Instrument.findInstrument) //look at other bind
       Orchestra.renderOrchestras()
   }
