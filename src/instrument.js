@@ -1,9 +1,12 @@
 class Instrument {
 
+    static allInstruments = [] 
+
     constructor(instrument){
       this.content = instrument.attributes.content
       this.id = instrument.id
       this.orchestraId = instrument.attributes.orchestra_id
+      Instrument.allInstruments.push(this)
     }
   
     instrumentHTML() {
@@ -27,7 +30,7 @@ class Instrument {
   } 
   
    findInstrument(){
-     
+     allInstruments.filter//look up filter method
    }
 
  }

@@ -1,8 +1,7 @@
 class Orchestra {
 
     static allOrchestras = []
-    static allInstruments = [] 
-
+  
     constructor(orchestra) {
         this.name = orchestra.attributes.name
         this.id = orchestra.id
@@ -26,12 +25,14 @@ class Orchestra {
   
     showOrchestra() {
       let container = document.getElementById('container')
-      let h3 = document.createElement('h3')
+      let h2 = document.createElement('h2')
       let ul = document.createElement("ul")
       let form = document.createElement("form")
       let label = document.createElement("label")
       let input = document.createElement('input')
       let button = document.createElement("input")
+      
+      
       button.type = "submit"
       button.innerText = "submit"
       input.id = "content"
@@ -42,9 +43,11 @@ class Orchestra {
       form.append(input)
       form.append(button)
       container.innerHTML = ""
-      h3.innerText = `${this.name} concert`
-      container.append(h3)
+      h2.innerText = `${this.name} concert`
+      container.append(h2)
       container.append(ul)
+
+
       for (let instrument of this.instruments) {
         let btn2 = document.createElement("button")
         let ele = document.createElement("li")
@@ -57,7 +60,6 @@ class Orchestra {
       }
       container.append(form)
       form.addEventListener('submit', this.submitInstrument.bind(this))
-      allInstruments << instrument 
     }
 
     
@@ -80,7 +82,7 @@ class Orchestra {
             let newInstrument = new Instrument(instrument.data)
             let orchestra = Orchestra.allOrchestras.find(orchestra => parseInt(orchestra.id) === newInstrument.orchestraId)
             let ul = document.querySelector("ul")
-            orchestra.instruments.push(newInstrument)
+            orchestra.instruments.push(newInstrument)//INVESTIGATE
             ul.innerHTML += newInstrument.instrumentHTML()
           } else {
             throw new Error(instrument.message)
@@ -150,7 +152,7 @@ class Orchestra {
               'Content-type': 'application/json'
           } 
       })
-      //name instead?
+      
 
     }catch(error){
       alert(error)
