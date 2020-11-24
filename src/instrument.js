@@ -1,7 +1,5 @@
 class Instrument {
 
-  static allInstruments = []  
-
     constructor(instrument){
       this.content = instrument.attributes.content
       this.id = instrument.id
@@ -28,4 +26,8 @@ class Instrument {
     }
   } 
   
+   findInstrument(){
+     
+   }
+
  }

@@ -1,7 +1,8 @@
 class Orchestra {
 
     static allOrchestras = []
-  
+    static allInstruments = [] 
+
     constructor(orchestra) {
         this.name = orchestra.attributes.name
         this.id = orchestra.id
@@ -41,7 +42,7 @@ class Orchestra {
       form.append(input)
       form.append(button)
       container.innerHTML = ""
-      h3.innerText = this.name
+      h3.innerText = `${this.name} concert`
       container.append(h3)
       container.append(ul)
       for (let instrument of this.instruments) {
@@ -56,6 +57,7 @@ class Orchestra {
       }
       container.append(form)
       form.addEventListener('submit', this.submitInstrument.bind(this))
+      allInstruments << instrument 
     }
 
     
