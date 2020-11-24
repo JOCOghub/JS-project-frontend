@@ -11,11 +11,15 @@ class Orchestra {
   
     renderOrchestra() {
       let div = document.getElementById('orchestraContainer')
-      let pgh = document.createElement("p")
-      pgh.id = this.id
-      pgh.innerText = this.name
-      pgh.addEventListener('click', this.showOrchestra.bind(this))
-      div.append(pgh)
+      let ptag = document.createElement("p")
+      let orcButton = document.createElement('button')
+      orcButton.innerText = "delete"
+      ptag.id = this.id
+      ptag.innerText = this.name
+      ptag.addEventListener('click', this.showOrchestra.bind(this))
+      div.append(ptag)
+      ptag.append(orcButton)//here
+      orcButton.addEventListener('click', this.deleteOrchestra.bind(ptag))
     }
   
   
@@ -26,16 +30,16 @@ class Orchestra {
       let form = document.createElement("form")
       let label = document.createElement("label")
       let input = document.createElement('input')
-      let btn = document.createElement("input")
-      btn.type = "submit"
-      btn.innerText = "submit"
+      let button = document.createElement("input")
+      button.type = "submit"
+      button.innerText = "submit"
       input.id = "content"
       label.innerText = "Content:"
       form.id = "instrumentForm"
       ul.id = "orchestraUl"
       form.append(label)
       form.append(input)
-      form.append(btn)
+      form.append(button)
       container.innerHTML = ""
       h3.innerText = this.name
       container.append(h3)
@@ -133,7 +137,23 @@ class Orchestra {
   
       }).catch((err) => alert(err))
     }
+  
+    async deleteOrchestra() { 
+      let removeOrchestra = document.getElementById(this.id)
+         removeOrchestra.remove()
+      try {
+      const response = await fetch(`http://localhost:3000/orchestras/${this.id}`, { 
+          method: 'DELETE', 
+          headers: { 
+              'Content-type': 'application/json'
+          } 
+      })
+      //name instead?
 
+    }catch(error){
+      alert(error)
+    }
+  } 
 
   }
   
