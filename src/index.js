@@ -29,7 +29,7 @@
       div.id = "orchestraContainer"
       mainContainer.append(div)
       form.addEventListener('submit', Orchestra.createOrchestra)
-      form2.addEventListener('click', Instrument.findInstrument) //look at other bind
+      form2.addEventListener('click', Instrument.findInstrument) 
       Orchestra.renderOrchestras()
   }
 

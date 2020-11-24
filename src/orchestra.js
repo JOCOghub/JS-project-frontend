@@ -18,7 +18,7 @@ class Orchestra {
       ptag.innerText = this.name
       ptag.addEventListener('click', this.showOrchestra.bind(this))
       div.append(ptag)
-      ptag.append(orcButton)//here
+      ptag.append(orcButton)
       orcButton.addEventListener('click', this.deleteOrchestra.bind(ptag))
     }
   
@@ -108,7 +108,7 @@ class Orchestra {
             let newInstrument = new Instrument(instrument.data)
             let orchestra = Orchestra.allOrchestras.find(orchestra => parseInt(orchestra.id) === newInstrument.orchestraId)
             let ul = document.querySelector("ul")
-            orchestra.instruments.push(newInstrument)//INVESTIGATE
+            orchestra.instruments.push(newInstrument)
             ul.innerHTML += newInstrument.instrumentHTML()
           } else {
             throw new Error(instrument.message)

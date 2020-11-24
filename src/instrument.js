@@ -32,15 +32,11 @@ class Instrument {
   static findInstrument() {
     event.preventDefault();
     let name = document.getElementById('instrumentName').value 
-    console.log(name,"- name")
-    console.log("all instruments - ",Instrument.allInstruments)
     let found = Instrument.allInstruments.find(instrument => instrument.content == name)
-    console.log(found,"- found")
     if (found){
       container.innerHTML = ""
       let orcId = found.orchestraId
       let orchestraName = Orchestra.allOrchestras.find(orchestra => orchestra.id == orcId)
-      console.log(orchestraName,"-orchestraName")
       container.innerHTML += `<li> The instrument you searched for is in the ${orchestraName.name} concert.</li>`
     } else {
       alert('Instrument not found')
