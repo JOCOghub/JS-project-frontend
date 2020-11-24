@@ -22,6 +22,32 @@ class Orchestra {
       orcButton.addEventListener('click', this.deleteOrchestra.bind(ptag))
     }
   
+    static createOrchestra() {
+      event.preventDefault()
+      const name = document.getElementById('orchestraName').value
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({orchestra: {name: name}})
+      }
+  
+      document.getElementById('orchestraName').value = ""
+  
+      fetch("http://localhost:3000/orchestras", options)
+      .then(r => r.json())
+      .then(orchestraObj => {
+        if (orchestraObj.data) {
+          let newOrchestra = new Orchestra(orchestraObj.data)
+          newOrchestra.renderOrchestra()
+        } else {
+          throw new Error(orchestraObj.message)
+        }
+  
+      }).catch((err) => alert(err))
+    }
   
     showOrchestra() {
       let container = document.getElementById('container')
@@ -115,32 +141,6 @@ class Orchestra {
       }).catch(err => alert(err))
     }
   
-    static createOrchestra() {
-      event.preventDefault()
-      const name = document.getElementById('orchestraName').value
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({orchestra: {name: name}})
-      }
-  
-      document.getElementById('orchestraName').value = ""
-  
-      fetch("http://localhost:3000/orchestras", options)
-      .then(r => r.json())
-      .then(orchestraObj => {
-        if (orchestraObj.data) {
-          let newOrchestra = new Orchestra(orchestraObj.data)
-          newOrchestra.renderOrchestra()
-        } else {
-          throw new Error(orchestraObj.message)
-        }
-  
-      }).catch((err) => alert(err))
-    }
   
     async deleteOrchestra() { 
       let removeOrchestra = document.getElementById(this.id)

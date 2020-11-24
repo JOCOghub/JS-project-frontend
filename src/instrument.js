@@ -30,7 +30,11 @@ class Instrument {
   } 
   
    findInstrument(){
-     allInstruments.filter//look up filter method
+     event.preventDefault()
+     console.log('works')
+     const name = document.getElementById('orchestraName').value
+     allInstruments.filter(instrument => instrument == name)
+     showOrchestra(instrument.orchestra)
    }
 
  }
